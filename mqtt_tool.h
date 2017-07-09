@@ -4,7 +4,7 @@
 #include <PubSubClient.h>
 
 const char* mqtt_server = "mqtt.cytron.tiscali.at";
-const char* mqtt_pubtopic = "ATSH28/KE/28A/LS/1/state";
+const char* mqtt_pubtopic = "ATSH28/OG/Z1/PS/1/state";
 
 
 WiFiClient espClient;
@@ -18,7 +18,7 @@ void reconnect_mqtt() {
   //while (!client.connected()) {
   DebugPrint("Attempting MQTT connection...");
   // Attempt to connect
-  if (client.connect("D1miniLS")) {
+  if (client.connect("D1miniPWSafe")) {
     DebugPrintln("connected");
     // Once connected, publish an announcement, retained
     //client.publish(mqtt_pubtopic, "hello world");
@@ -48,8 +48,8 @@ void check_mqtt() {
   client.loop();
 }
 
-void pub_mqtt_toggle() {
-  client.publish(mqtt_pubtopic, "2");
+void pub_mqtt_opened() {
+  client.publish(mqtt_pubtopic, "opened");
 }
 
 #endif

@@ -16,7 +16,7 @@
 #include "tools_wifi.h"
 #include "ota_tool.h"
 #include "mqtt_tool.h"
-#include "lightning_tool.h"
+#include "epaper_tool.h"
 
 
 void callback_mqtt(char* topic, byte* payload, unsigned int length) {
@@ -30,23 +30,21 @@ void setup() {
 
   DebugPrintln("\n" + String(__DATE__) + ", " + String(__TIME__) + " " + String(__FILE__));
 
-  wifi_init("D1miniLS");
+  wifi_init("D1miniPWSafe");
   delay(500);
 
-  init_ota("D1miniLS");
+  init_ota("D1miniPWSafe");
 
 //  pinMode(BUILTIN_LED, OUTPUT);  // initialize onboard LED as output
 
   init_mqtt(callback_mqtt);
 
-  init_lightning();
+  init_epaper();
 }
 
 void loop() {
 
   check_ota();
-
-  check_lightning();
 
 //  digitalWrite(BUILTIN_LED, HIGH);  // turn on LED with voltage HIGH
   delay(1000);                      // wait one second
