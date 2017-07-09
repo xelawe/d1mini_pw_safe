@@ -1,3 +1,5 @@
+
+
 /*
   Copyright (c) 2017, Embedded Adventures, www.embeddedadventures.com
   All rights reserved.
@@ -59,12 +61,18 @@ SSD1607 epd(CSPIN, DCPIN, BUSYPIN, RSTPIN);
 void drawLogo(draw_x_type x, draw_y_type y) {
   draw_clear_screen();
   delay(100);
-  draw_bitmap(x, y - 60, 1, embedded_bitmap);
-  draw_bitmap(x, y - 75, 1, adventures_bitmap);
-  draw_bitmap(x, y, 1, e_big_bitmap);
+  //  draw_bitmap(x, y - 60, 1, embedded_bitmap);
+  //  draw_bitmap(x, y - 75, 1, adventures_bitmap);
+  //  draw_bitmap(x, y, 1, e_big_bitmap);
   draw_bitmap(x + 30, y, 1, a_big_bitmap);
-  draw_fonts_print_str(DRAW_FONT_10DOUBLE_ID, x - 10, y - 100, 128, 0, 2, "EPD-200200B");
-  draw_fonts_print_str(DRAW_FONT_10NORMAL_ID, x - 30, y - 115, 128, 0, 2, "200X200 EPAPER DISPLAY");
+  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x - 10, y - 100, 128, 0, 2, sealnbr.toCharArray);
+
+  draw_paint();
+}
+
+void drawVoid(draw_x_type x, draw_y_type y) {
+
+  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x - 30, y - 115, 128, 0, 2, "---- ALARM ----");
   draw_paint();
 }
 
@@ -83,5 +91,7 @@ void drv_paint() {
   epd.displayFullRev(draw_buffer);
 }
 
-
+void mark_epaper() {
+  drawVoid(70, 175);
+}
 

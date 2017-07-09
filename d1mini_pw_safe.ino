@@ -13,10 +13,12 @@
 #define DebugPrintln(...) { }
 #endif
 
+#include "config_tool.h"
 #include "tools_wifi.h"
 #include "ota_tool.h"
 #include "mqtt_tool.h"
 #include "epaper_tool.h"
+
 
 
 void callback_mqtt(char* topic, byte* payload, unsigned int length) {
@@ -30,24 +32,31 @@ void setup() {
 
   DebugPrintln("\n" + String(__DATE__) + ", " + String(__TIME__) + " " + String(__FILE__));
 
+  init_epaper();
+
+  init_config();
+
+  if ( conf_void = true ) {
+    mark_epaper( );
+  }
+
   wifi_init("D1miniPWSafe");
   delay(500);
 
   init_ota("D1miniPWSafe");
 
-//  pinMode(BUILTIN_LED, OUTPUT);  // initialize onboard LED as output
+  //  pinMode(BUILTIN_LED, OUTPUT);  // initialize onboard LED as output
 
   init_mqtt(callback_mqtt);
 
-  init_epaper();
 }
 
 void loop() {
 
   check_ota();
 
-//  digitalWrite(BUILTIN_LED, HIGH);  // turn on LED with voltage HIGH
+  //  digitalWrite(BUILTIN_LED, HIGH);  // turn on LED with voltage HIGH
   delay(1000);                      // wait one second
-//  digitalWrite(BUILTIN_LED, LOW);   // turn off LED with voltage LOW
-//  delay(1000);                      // wait one second
+  //  digitalWrite(BUILTIN_LED, LOW);   // turn off LED with voltage LOW
+  //  delay(1000);                      // wait one second
 }
