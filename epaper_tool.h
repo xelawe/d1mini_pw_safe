@@ -65,7 +65,10 @@ void drawLogo(draw_x_type x, draw_y_type y) {
   //  draw_bitmap(x, y - 75, 1, adventures_bitmap);
   //  draw_bitmap(x, y, 1, e_big_bitmap);
   draw_bitmap(x + 30, y, 1, a_big_bitmap);
-  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x - 10, y - 100, 128, 0, 2, sealnbr.toCharArray);
+
+  char buffer[20];
+  sealnbr.toCharArray(buffer, sealnbr.length() + 1);
+  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x - 10, y - 100, 128, 0, 2, buffer);
 
   draw_paint();
 }

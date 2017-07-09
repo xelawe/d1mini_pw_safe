@@ -24,7 +24,7 @@
 #include "FS.h"
 
 String confnbr;
-String sealnbr = "123456";
+String sealnbr = "123457";
 boolean conf_void = false;
 
 boolean fileWrite(String name, String content) {
@@ -52,7 +52,7 @@ boolean fileWrite(String name, String content) {
     //text string (it's named "content") into a uint8_t pointer. If pointers confuse you, you're not alone!
     //I don't want to go into detail about pointers here, I'll do another example with casting and pointers, for now, this is the syntax
     //to write a String into a text file.
-    file.write((uint8_t *)content.c_str(), content.length());
+    file.write((uint8_t *)content.c_str(), content.length() + 2);
     file.close();
     return true;
   }
@@ -113,14 +113,17 @@ void init_config() {
     Serial.println("-----------------------------");
     Serial.println(confnbr);
   }
+  confnbr.trim();
+  Serial.println(confnbr);
 
   if ( confnbr == sealnbr ) {
     // Seal Number was already stored -> Seal is broken!
+    Serial.println("Seal is broken!");
     conf_void = true;
     return;
   }
 
-  if ( conf_void = false ) {
+  if ( conf_void == false ) {
     // actual seal number is not stored -> write to FS
     //Write to a file in SPIFFS.
     Serial.println("Writing to a file");

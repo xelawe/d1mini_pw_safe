@@ -36,7 +36,7 @@ void setup() {
 
   init_config();
 
-  if ( conf_void = true ) {
+  if ( conf_void == true ) {
     mark_epaper( );
   }
 
