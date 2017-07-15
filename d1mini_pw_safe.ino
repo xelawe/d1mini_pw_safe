@@ -32,11 +32,14 @@ void setup() {
 
   DebugPrintln("\n" + String(__DATE__) + ", " + String(__TIME__) + " " + String(__FILE__));
 
-  init_epaper();
+    init_epaper();
 
   init_config();
-
-  if ( conf_void == true ) {
+    paint_epaper( );
+  if ( conf_void == false ) {
+    paint_epaper( );
+  }
+  else {
     mark_epaper( );
   }
 

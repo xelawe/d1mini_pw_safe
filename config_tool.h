@@ -1,30 +1,7 @@
-//#include <EEPROM.h>
-//#define seal_nbr
-//
-//char arrayToStore[20];                    // Must be greater than the length of string.
-//String sealString = "123456";
-//String eepromString;
-//int address = 0;
-//
-//void init_config() {
-//
-//  EEPROM.begin(512);
-//  EEPROM.get(address, arrayToStore);
-//
-//  eepromString.getBytes(arrayToStore, sealString.length() + 1);
-//  if ( sealString != eepromString ) {
-//
-//    sealString.toCharArray(arrayToStore, sealString.length() + 1); // Convert string to array.
-//    EEPROM.get(address, arrayToStore);
-//    EEPROM.commit();
-//
-//  }
-//}
-
 #include "FS.h"
 
 String confnbr;
-String sealnbr = "123457";
+String sealnbr = "123467";
 boolean conf_void = false;
 
 boolean fileWrite(String name, String content) {
