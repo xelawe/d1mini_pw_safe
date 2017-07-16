@@ -69,7 +69,7 @@ void drawLogo(draw_x_type x, draw_y_type y) {
   draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x + 70, y - 12, 128, 0, 2, "CYTRON");
   draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x + 70, y - 32, 128, 0, 2, "PASSWORD SAFE");
 
-  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x, y - 50, 128, 0, 2, "SEAL #");
+  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x, y - 80, 128, 0, 2, "SEAL #");
   sealnbr.toCharArray(lv_buffer, sealnbr.length() + 1);
   draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x + 50, y - 80, 128, 0, 2, lv_buffer);
 
@@ -78,9 +78,9 @@ void drawLogo(draw_x_type x, draw_y_type y) {
 
 void drawVoid(draw_x_type x, draw_y_type y) {
 
-  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x - 30, y - 92, 128, 0, 2, "---- ALARM ----");
-  draw_bitmap(x - 32, y - 100, 1, alertpicl);
-  draw_bitmap(x , y - 100, 1, alertpicr);
+  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x - 50, y - 92, 128, 0, 2, "---- ALARM ----");
+  draw_bitmap(x -32 , y - 15, 1, alertpicl);
+  draw_bitmap(x , y - 15, 1, alertpicr);
 }
 
 void init_epaper() {
@@ -103,7 +103,7 @@ void paint_epaper() {
 }
 
 void mark_epaper() {
-  drawVoid(70, 175);
+  drawVoid(100, 100);
 }
 
 void draw_epaper(){
