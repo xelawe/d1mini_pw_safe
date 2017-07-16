@@ -1,7 +1,7 @@
 #include "FS.h"
 
 String confnbr;
-String sealnbr = "123467";
+String sealnbr = "123456";
 boolean conf_void = false;
 
 boolean fileWrite(String name, String content) {

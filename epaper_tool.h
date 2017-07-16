@@ -60,27 +60,26 @@ SSD1607 epd(CSPIN, DCPIN, BUSYPIN, RSTPIN);
 
 
 void drawLogo(draw_x_type x, draw_y_type y) {
+  char lv_buffer[20];
+
   draw_clear_screen();
   delay(100);
-  //  draw_bitmap(x, y - 60, 1, embedded_bitmap);
-  //  draw_bitmap(x, y - 75, 1, adventures_bitmap);
-  //  draw_bitmap(x, y, 1, e_big_bitmap);
-  // draw_bitmap(x + 30, y, 1, a_big_bitmap);
-
   draw_bitmap(x, y, 1, cylogo);
-  
-  char buffer[20];
-  sealnbr.toCharArray(buffer, sealnbr.length() + 1);
-  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x - 10, y - 100, 128, 0, 2, buffer);
 
-  draw_paint();
+  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x + 70, y - 12, 128, 0, 2, "CYTRON");
+  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x + 70, y - 32, 128, 0, 2, "PASSWORD SAFE");
+
+  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x, y - 80, 128, 0, 2, "SEAL #");
+  sealnbr.toCharArray(lv_buffer, sealnbr.length() + 1);
+  draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x + 60, y - 80, 128, 0, 2, lv_buffer);
+
 }
 
 
 void drawVoid(draw_x_type x, draw_y_type y) {
 
   draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x - 30, y - 115, 128, 0, 2, "---- ALARM ----");
-  draw_paint();
+
 }
 
 void init_epaper() {
@@ -99,10 +98,14 @@ void drv_paint() {
 }
 
 void paint_epaper() {
-   drawLogo(20, 180);
+  drawLogo(20, 180);
 }
 
 void mark_epaper() {
   drawVoid(70, 175);
+}
+
+void draw_epaper(){
+    draw_paint();
 }
 

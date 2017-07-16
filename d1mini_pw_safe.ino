@@ -31,17 +31,17 @@ void setup() {
 #endif
 
   DebugPrintln("\n" + String(__DATE__) + ", " + String(__TIME__) + " " + String(__FILE__));
-
-    init_epaper();
-
+  
   init_config();
-    paint_epaper( );
-  if ( conf_void == false ) {
-    paint_epaper( );
-  }
-  else {
+  
+  init_epaper();
+  paint_epaper( );
+
+  if ( conf_void == true ) {
     mark_epaper( );
   }
+
+  draw_epaper();
 
   wifi_init("D1miniPWSafe");
   delay(500);
