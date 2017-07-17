@@ -56,6 +56,7 @@
       MOSI - 11
       SCK  - 13
 */
+
 SSD1607 epd(CSPIN, DCPIN, BUSYPIN, RSTPIN);
 
 
@@ -79,8 +80,11 @@ void drawLogo(draw_x_type x, draw_y_type y) {
 void drawVoid(draw_x_type x, draw_y_type y) {
 
   draw_fonts_print_str(DRAW_FONT_12DOUBLE_ID, x - 50, y - 92, 128, 0, 2, "---- ALARM ----");
-  draw_bitmap(x -32 , y - 15, 1, alertpicl);
-  draw_bitmap(x , y - 15, 1, alertpicr);
+  //draw_bitmap(x -32 , y - 15, 1, alertpicl);
+  //draw_bitmap(x , y - 15, 1, alertpicr);
+  draw_bitmap(x - 32 , y - 15, 1, alertpic);
+
+
 }
 
 void init_epaper() {
@@ -106,7 +110,7 @@ void mark_epaper() {
   drawVoid(100, 100);
 }
 
-void draw_epaper(){
-    draw_paint();
+void draw_epaper() {
+  draw_paint();
 }
 
