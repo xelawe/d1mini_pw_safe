@@ -38,7 +38,7 @@
 #include <SPI.h>
 #include <draw.h>
 #include <SSD1607.h>
-#include "cylogo.h"
+#include "pics.h"
 
 #define DCPIN   12
 #define CSPIN   2

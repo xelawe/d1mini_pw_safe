@@ -14,12 +14,10 @@
 #endif
 
 #include "config_tool.h"
-#include "tools_wifi.h"
-#include "ota_tool.h"
+#include "cy_wifi.h"
+#include "cy_ota.h"
 #include "mqtt_tool.h"
 #include "epaper_tool.h"
-
-
 
 
 void callback_mqtt(char* topic, byte* payload, unsigned int length) {
@@ -32,10 +30,12 @@ void setup() {
 #endif
 
   DebugPrintln("\n" + String(__DATE__) + ", " + String(__TIME__) + " " + String(__FILE__));
+
+  init_epaper();
+  paint_epaper( );
   
   init_config();
-  
-  init_epaper();
+
   paint_epaper( );
 
   if ( conf_void == true ) {
