@@ -32,17 +32,20 @@ void setup() {
   DebugPrintln("\n" + String(__DATE__) + ", " + String(__TIME__) + " " + String(__FILE__));
 
   init_epaper();
-  paint_epaper( );
-  
+  // Preset with Alarm Sign
+    paint_epaper( );
+    mark_epaper( );
+    draw_epaper();
+
+  // Read config
   init_config();
 
-  paint_epaper( );
-
-  if ( conf_void == true ) {
-    mark_epaper( );
-  }
-
+  // Delete Alarm Mark, if everything is OK
+  if ( conf_void == false ) {
+   paint_epaper( );
+    //mark_epaper( );
   draw_epaper();
+  }
 
   wifi_init("D1miniPWSafe");
   delay(500);
